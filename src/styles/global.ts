@@ -1,0 +1,53 @@
+
+    import { createGlobalStyle } from "styled-components";
+
+    export const GlobalStyle = createGlobalStyle`
+
+        :root{
+            --background: #F0F2F5;
+            --red: #E52E4D;
+            --blue: #5429CC;
+
+            --blue-light: #6933FF;
+
+            --text-tile: #363F5F;
+            --text-body: #969CB5;
+
+            --background: #F8F2F5;
+            --shape: #FFFFFF;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html{
+            @media (max-width: 1080px){
+                font-size: 93.75%; //15px
+            }
+
+            @media (max-width: 720px){
+                font-size: 87.5%; //14px
+            }
+        }
+
+        //REM: 
+        //1rem em tela de 1080px = 15px;
+        //1rem em tela de 720px = 14px;
+        //Melhor para acessibilidade
+
+        body{
+            background: var(--background);
+        }
+
+        button{
+            cursor: pointer;
+        }
+
+        [disabled]{
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+    `;
