@@ -15,6 +15,8 @@
             --text-body: #969CB5;
 
             --background: #F8F2F5;
+            --backgroundInputModal: #E7E9EE;
+            --borderColorModal: #D7D7D7;
             --shape: #FFFFFF;
         }
 
@@ -82,5 +84,19 @@
             padding: 3rem;
             position: relative;
             border-radius: 0.25rem;
+        }
+
+        .react-modal-close{
+            position: absolute;
+            right: 1.5rem;
+            top: 1.5rem;
+            border: 0;
+            background: transparent;
+
+            transition: filter 0.2s;
+
+            &:hover{
+                filter: brightness(0.9);
+            }
         }
     `;
