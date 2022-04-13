@@ -1,7 +1,6 @@
 
     import { useState } from "react";
     import { Container, Content } from "./styles";
-    import Modal from "react-modal";
 
     import logoImg from "../../assets/download/assets/logo.svg";
     
