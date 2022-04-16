@@ -9,11 +9,13 @@
 
     export function Summary(){
 
+        const transaction = useContext(TransactionsContext);
+
+        console.log(transaction);
+
         return(
             <Container>
-                <TransactionsContext.Consumer>
-                    
-                </TransactionsContext.Consumer>
+
                 <div>
                     <header>
                         <p>Entradas</p>
