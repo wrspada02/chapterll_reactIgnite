@@ -11,8 +11,6 @@
 
         const transaction = useContext(TransactionsContext);
 
-        console.log(transaction);
-
         return(
             <Container>
 

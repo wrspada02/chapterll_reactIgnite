@@ -1,14 +1,15 @@
 
-    import { FormEvent, useState } from "react";
-    
+    import { FormEvent, useState, useContext } from "react";
+    import { TransactionsContext } from "../../TransactionsContext";
+    import { api } from "../../services/api";
     import Modal from "react-modal";
-    import { Container, TransactionTypeContainer, RadioBox } from "./styles";
-
+    
     import closeImg from "../../assets/download/assets/close.svg";
     import incomeImg from "../../assets/download/assets/income.svg";
     import outcomeImg from "../../assets/download/assets/outcome.svg";
-    import { api } from "../../services/api";
 
+    import { Container, TransactionTypeContainer, RadioBox } from "./styles";
+    
     interface NewTransactionModalProps{
         isOpen: boolean,
         onRequestClose: () => void
@@ -16,23 +17,23 @@
 
     export function NewTransactionModal(props: NewTransactionModalProps){
 
+        const { createTransaction } = useContext(TransactionsContext);
+
         const [title, setTitle] = useState('');
-        const [value, setValue] = useState(0);
+        const [amount, setAmount] = useState(0);
         const [category, setCategory] = useState('');
-        const [typeTransaction, setTypeTransaction] = useState('deposit');
+        const [type, setType] = useState('deposit');
 
         function handleCreateNewTransaction(event: FormEvent){
             event.preventDefault();
 
-
-            const data = {
+            createTransaction({
                 title,
-                value,
+                amount,
                 category,
-                typeTransaction
-            };
-
-            api.post('/transactions', data)
+                type,
+            });
+            
         }
 
         return(
@@ -63,17 +64,17 @@
                 <input
                 type="number"
                 placeholder="Valor"
-                value={value}
-                onChange={event => setValue(Number(event.target.value))}
+                value={amount}
+                onChange={event => setAmount(Number(event.target.value))}
                 />
 
                 <TransactionTypeContainer>
                     <RadioBox
                     type="button"
                     onClick={() => {
-                        setTypeTransaction('deposit');
+                        setType('deposit');
                     }}
-                    isActive={typeTransaction === 'deposit'}
+                    isActive={type === 'deposit'}
                     activeColor="green"
                     >
                         <img src={incomeImg} alt="Tipo entrada" />
@@ -83,9 +84,9 @@
                     <RadioBox
                     type="button"
                     onClick={() => {
-                        setTypeTransaction('withdraw');
+                        setType('withdraw');
                     }}
-                    isActive={typeTransaction === 'withdraw'}
+                    isActive={type === 'withdraw'}
                     activeColor="red"
                     >
                         <img src={outcomeImg} alt="Tipo saída" />
