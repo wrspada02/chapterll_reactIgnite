@@ -8,7 +8,7 @@
 
     export function TransactionsTable(){
 
-        const { transaction } = useContext(TransactionsContext);
+        const { transactions } = useContext(TransactionsContext);
 
 
         return(
@@ -24,7 +24,7 @@
                     </thead>
 
                     <tbody>
-                        {transaction.map((transaction) => {
+                        {transactions.map((transaction) => {
                             return (
                                 <tr key={transaction.id}>
                                     <td>{transaction.title}</td>
